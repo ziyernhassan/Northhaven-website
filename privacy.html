@@ -6,11 +6,21 @@
 <title>Privacy Policy — North Haven</title>
 <meta name="description" content="How North Haven collects, uses, stores and protects personal data, both our own visitors and the customers of the businesses we work with.">
 <link rel="canonical" href="https://northhaven.mv/privacy.html">
-<meta name="theme-color" content="#0B1F2A">
+<meta name="theme-color" content="#07100F">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307100F'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' fill='%234FD1B9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  try{var t=localStorage.getItem('nh-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -21,18 +31,35 @@
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
       <a class="wordmark" href="index.html">North <em>Haven</em></a>
+
       <ul class="nav__links">
         <li><a href="index.html#what-we-do">What we do</a></li>
+        <li><a href="index.html#what-it-answers">What it answers</a></li>
         <li><a href="index.html#how-it-works">How it works</a></li>
         <li><a href="index.html#questions">Questions</a></li>
       </ul>
-      <a class="btn btn--primary nav__cta" href="index.html#contact">Book a free demo</a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
-        <span class="bar"></span><span class="sr">Menu</span>
-      </button>
+
+      <div class="nav__end">
+        <button class="theme" type="button" data-theme-toggle aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="sr" data-theme-label>Switch to light theme</span>
+        </button>
+
+        <a class="btn btn--primary nav__cta" href="index.html#contact">Book a free demo</a>
+
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="bar"></span>
+          <span class="sr">Menu</span>
+        </button>
+      </div>
     </nav>
+
     <div class="nav__drawer" id="mobile-nav" data-open="false">
       <a href="index.html#what-we-do">What we do</a>
+      <a href="index.html#what-it-answers">What it answers</a>
       <a href="index.html#how-it-works">How it works</a>
       <a href="index.html#questions">Questions</a>
       <a class="btn btn--primary btn--block" href="index.html#contact">Book a free demo</a>
@@ -43,7 +70,6 @@
 <main id="main" class="section">
   <div class="wrap">
     <article class="legal">
-
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: 20 August 2026</p>
 
@@ -62,13 +88,13 @@
             WhatsApp assistant we operate</li>
       </ul>
 
-      <h2>1 · Who we are</h2>
-      <p>North Haven is a business registered in the Republic of Maldives, based in Malé,
+      <h2>1 &middot; Who we are</h2>
+      <p>North Haven is a business registered in the Republic of Maldives, based in Mal&eacute;,
       providing automated customer-messaging assistants and websites to small businesses.
       For any privacy question, contact
       <a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a>.</p>
 
-      <h2>2 · Visitors and enquirers</h2>
+      <h2>2 &middot; Visitors and enquirers</h2>
 
       <h3>What we collect</h3>
       <ul>
@@ -88,7 +114,7 @@
       for the duration of the relationship and for a reasonable period afterwards for accounting
       purposes.</p>
 
-      <h2>3 · Customers of our clients</h2>
+      <h2>3 &middot; Customers of our clients</h2>
 
       <p>When we operate a WhatsApp assistant for a business, messages from that business's
       customers pass through our systems so the assistant can read and answer them.</p>
@@ -123,7 +149,7 @@
       behalf and under their instructions. If a client ends their service with us, their
       conversation data is deleted on request.</p>
 
-      <h2>4 · Third parties we rely on</h2>
+      <h2>4 &middot; Third parties we rely on</h2>
       <p>Delivering the service requires a small number of providers, each of which handles data
       under its own terms:</p>
       <ul>
@@ -134,14 +160,14 @@
       <p>We choose providers that offer reasonable security and confidentiality commitments, and
       we share only what is necessary for the service to function.</p>
 
-      <h2>5 · Security</h2>
+      <h2>5 &middot; Security</h2>
       <p>Access to client data is restricted to the people who need it to run the service.
       Credentials are stored securely and connections are encrypted in transit. We will tell any
       affected client promptly if we become aware of a breach involving their data.</p>
       <p>We are a small business, not a bank. We take security seriously and we would rather state
       that plainly than imply protections we cannot guarantee.</p>
 
-      <h2>6 · Your rights</h2>
+      <h2>6 &middot; Your rights</h2>
       <p>You may ask us to:</p>
       <ul>
         <li>tell you what personal data we hold about you</li>
@@ -153,21 +179,20 @@
       within 30 days. If your request concerns a conversation with a business we work for, we may
       need to refer you to that business, since the data is theirs.</p>
 
-      <h2>7 · Children</h2>
+      <h2>7 &middot; Children</h2>
       <p>Our services are provided to businesses and are not directed at children. We do not
       knowingly collect data from anyone under 18.</p>
 
-      <h2>8 · Changes</h2>
+      <h2>8 &middot; Changes</h2>
       <p>If this policy changes we will update the date at the top of this page. Material changes
       affecting existing clients will be communicated to them directly.</p>
 
-      <h2>9 · Contact</h2>
+      <h2>9 &middot; Contact</h2>
       <p>
         North Haven<br>
-        Malé, Republic of Maldives<br>
+        Mal&eacute;, Republic of Maldives<br>
         <a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a>
       </p>
-
     </article>
   </div>
 </main>
@@ -176,31 +201,24 @@
   <div class="wrap">
     <div class="footer__top">
       <div class="footer__blurb">
-        <span class="wordmark wordmark--light">North <em>Haven</em></span>
-        <div class="rule rule--light"></div>
+        <span class="wordmark">North <em>Haven</em></span>
+        <div class="rule"></div>
         <p>Automated customer replies and websites for small businesses in the Maldives.</p>
       </div>
-      <div class="footer__col">
-        <h3>Services</h3>
+      <nav class="footer__nav" aria-label="Footer">
         <a href="index.html#what-we-do">WhatsApp assistant</a>
-        <a href="index.html#what-we-do">Websites</a>
-        <a href="index.html#contact">Book a demo</a>
-      </div>
-      <div class="footer__col">
-        <h3>Company</h3>
         <a href="index.html#how-it-works">How it works</a>
-        <a href="index.html#who-its-for">Who it's for</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <div class="footer__col">
-        <h3>Legal</h3>
+        <a href="index.html#what-we-do">Websites</a>
+        <a href="index.html#questions">Questions</a>
+        <a href="index.html#contact">Book a demo</a>
+        <a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
-      </div>
+      </nav>
     </div>
     <div class="footer__bottom">
-      <span>© <span data-year>2026</span> North Haven. Registered in the Republic of Maldives.</span>
-      <span>hello@northhaven.mv · Malé, Maldives</span>
+      <span>&copy; <span data-year>2026</span> North Haven. Registered in the Republic of Maldives.</span>
+      <span>Mal&eacute;, Maldives</span>
     </div>
   </div>
 </footer>

@@ -28,22 +28,30 @@ assets/main.js
 - **Empty** — opens WhatsApp with the enquiry pre-filled.
 - **A URL** — POSTs `{ name, business, phone, message }` as JSON. Any 2xx is success.
 
-## Deploy
+## Theme
 
-Upload the four files and the `assets` folder to any static host. Then point the domain at it and
-enable HTTPS.
+Dark is the default. The header toggle writes `nh-theme` to `localStorage` and sets
+`data-theme="light"` on `<html>`. An inline script in each `<head>` applies the stored value
+before first paint, so there is no flash.
+
+Every colour is a custom property. `:root` holds dark, `[data-theme="light"]` overrides it.
+Nothing else in the stylesheet references a literal colour.
 
 ## Design tokens
 
-Every colour, font and radius is a custom property at the top of `assets/styles.css`.
+```
+dark    bg #07100F · surface #0E1E1C · fg #E9F1EF · accent #4FD1B9
+light   bg #FBFAF8 · surface #FFFFFF · fg #0B1F2A · accent #0C6B63
+type    Instrument Serif (display) · Instrument Sans (body)
+space   8pt scale, --s1 … --s12
+```
 
-```
-ink #0B1F2A · teal #0F766E · sand #D9A441 · canvas #FBFAF8
-Fraunces (headings) · DM Sans (body)
-```
+## Deploy
+
+Upload the four files and the `assets` folder to any static host. Then point the domain at it
+and enable HTTPS.
 
 ## Still missing
 
 - `og:image` — 1200×630 social card
-- `favicon.ico`
 - A real form endpoint

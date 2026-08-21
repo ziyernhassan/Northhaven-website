@@ -14,12 +14,21 @@
 <meta property="og:description" content="Your customers get an answer in seconds. Even at midnight. Automated WhatsApp assistants and websites for small businesses in the Maldives.">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0B1F2A">
+<meta name="theme-color" content="#07100F">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307100F'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' fill='%234FD1B9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  try{var t=localStorage.getItem('nh-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}
+})();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 
 <script type="application/ld+json">
@@ -46,23 +55,33 @@
 
       <ul class="nav__links">
         <li><a href="#what-we-do">What we do</a></li>
+        <li><a href="#what-it-answers">What it answers</a></li>
         <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#who-its-for">Who it's for</a></li>
         <li><a href="#questions">Questions</a></li>
       </ul>
 
-      <a class="btn btn--primary nav__cta" href="#contact">Book a free demo</a>
+      <div class="nav__end">
+        <button class="theme" type="button" data-theme-toggle aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="sr" data-theme-label>Switch to light theme</span>
+        </button>
 
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
-        <span class="bar"></span>
-        <span class="sr">Menu</span>
-      </button>
+        <a class="btn btn--primary nav__cta" href="#contact">Book a free demo</a>
+
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="bar"></span>
+          <span class="sr">Menu</span>
+        </button>
+      </div>
     </nav>
 
     <div class="nav__drawer" id="mobile-nav" data-open="false">
       <a href="#what-we-do">What we do</a>
+      <a href="#what-it-answers">What it answers</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#who-its-for">Who it's for</a>
       <a href="#questions">Questions</a>
       <a class="btn btn--primary btn--block" href="#contact">Book a free demo</a>
     </div>
@@ -72,26 +91,37 @@
 <main id="main">
 
   <section class="hero">
+    <div class="hero__aura" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero__grid">
 
         <div>
-          <h1>Your customers get an answer <span>in seconds.</span> Even at midnight.</h1>
+          <h1>Your customers get an answer <em>in seconds.</em> Even at midnight.</h1>
           <p class="hero__lead">
             North Haven builds automated assistants that answer your customers' WhatsApp messages
             instantly, using your menu, your hours and your delivery areas. Nobody waits, nothing
             gets missed. We build the websites too.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--light btn--lg" href="#contact">Book a free demo</a>
-            <a class="btn btn--outline-light btn--lg" href="#how-it-works">See how it works</a>
+            <a class="btn btn--primary btn--lg" href="#contact">
+              Book a free demo
+              <span class="btn__disc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#how-it-works">
+              See how it works
+              <span class="btn__disc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              </span>
+            </a>
           </div>
           <p class="hero__where">Malé, Maldives</p>
         </div>
 
         <div class="demo" id="demo">
-          <div class="demo__phone">
-            <div class="demo__screen">
+          <div class="demo__tray">
+            <div class="demo__phone">
               <div class="demo__bar">
                 <span class="demo__av" aria-hidden="true">S</span>
                 <span class="demo__who">
@@ -99,7 +129,7 @@
                   <span><i aria-hidden="true"></i> online</span>
                 </span>
               </div>
-              <div class="demo__body" aria-label="Example conversation with a restaurant assistant at 11:47 PM" role="img">
+              <div class="demo__body" role="img" aria-label="An example WhatsApp conversation at 11:47 PM. A customer asks whether the restaurant is open and delivers to Hulhumalé, and the assistant answers instantly with the closing time, the delivery charge and the vegetarian options.">
                 <span class="demo__stamp" data-seq data-hold="500">Today · 11:47 PM</span>
 
                 <div class="msg msg--in" data-seq data-hold="900">
@@ -130,7 +160,7 @@
           </div>
           <p class="demo__caption">Nobody at the restaurant was awake. <b>The first reply took four seconds.</b></p>
           <button class="demo__replay" type="button" data-replay hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
             Play again
           </button>
         </div>
@@ -143,22 +173,22 @@
     <div class="wrap">
       <ul>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span><b>Instant replies</b> · 24 hours a day</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13.5H12l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
+          <span><b>Instant replies.</b> Every hour of the day, including the ones you are asleep for.</span>
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span><b>Your information only</b> · it never invents answers</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><b>Your information only.</b> It answers from what you give us and never invents.</span>
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span><b>Always a human</b> · one message away</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20"/><circle cx="10" cy="7.5" r="3.5"/><path d="M18 8.5h4M20 6.5v4"/></svg>
+          <span><b>Always a human.</b> Anything it cannot answer goes straight to your team.</span>
         </li>
       </ul>
     </div>
   </div>
 
-  <section class="section section--alt" id="what-we-do">
+  <section class="section" id="what-we-do">
     <div class="wrap">
       <div class="shead">
         <h2>Two things, done properly</h2>
@@ -169,11 +199,11 @@
       <article class="svc">
         <div>
           <div class="svc__mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
-            <span>Service one</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
+            <span>The main service</span>
           </div>
           <h3>WhatsApp assistant</h3>
-          <p class="svc__lede">An assistant on your WhatsApp that answers the questions you're
+          <p class="svc__lede">An assistant on your WhatsApp that answers the questions you are
              tired of answering.</p>
         </div>
         <ul class="svc__list">
@@ -189,12 +219,12 @@
       <article class="svc">
         <div>
           <div class="svc__mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            <span>Service two</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8.5 20.5h7M12 16.5v4"/></svg>
+            <span>If you need one</span>
           </div>
           <h3>Websites</h3>
-          <p class="svc__lede">A fast, simple site built for phones, because that's where your
-             customers are.</p>
+          <p class="svc__lede">A fast, simple site built for phones, because that is where your
+             customers already are.</p>
         </div>
         <ul class="svc__list">
           <li>Menu, photos, hours, location</li>
@@ -208,20 +238,89 @@
     </div>
   </section>
 
+  <section class="section" id="what-it-answers">
+    <div class="wrap">
+      <div class="shead">
+        <h2>The questions you answer every single day</h2>
+        <p>These are the real messages small businesses in Malé get, over and over, usually at
+           the worst possible moment. The assistant takes all of them.</p>
+      </div>
+
+      <div class="ask">
+        <div class="ask__row">
+          <div class="ask__who">
+            <h3>Restaurants &amp; cafés</h3>
+            <p>Asked a hundred times a week, usually mid-service.</p>
+          </div>
+          <ul class="ask__chips">
+            <li>Are you open now?</li>
+            <li>Do you deliver to Hulhumalé?</li>
+            <li>What's the delivery charge?</li>
+            <li>Do you have vegetarian?</li>
+            <li>Can I book a table for eight?</li>
+            <li>Is the kitchen halal?</li>
+            <li>How much is the chicken sub?</li>
+            <li>Do you take card?</li>
+            <li>What time do you close on Friday?</li>
+            <li>Where exactly are you?</li>
+          </ul>
+        </div>
+
+        <div class="ask__row">
+          <div class="ask__who">
+            <h3>Guesthouses</h3>
+            <p>The same dozen questions, from every single guest.</p>
+          </div>
+          <ul class="ask__chips">
+            <li>Do you arrange airport transfer?</li>
+            <li>What time is the ferry?</li>
+            <li>Is breakfast included?</li>
+            <li>Do you have a family room?</li>
+            <li>Is there hot water?</li>
+            <li>How far is the bikini beach?</li>
+            <li>Can I check in early?</li>
+            <li>Do you rent snorkel gear?</li>
+            <li>Is the wifi free?</li>
+          </ul>
+        </div>
+
+        <div class="ask__row">
+          <div class="ask__who">
+            <h3>Salons &amp; small shops</h3>
+            <p>Answered instantly instead of whenever someone is free.</p>
+          </div>
+          <ul class="ask__chips">
+            <li>How much for a haircut?</li>
+            <li>Are you free at four?</li>
+            <li>Do you do bridal?</li>
+            <li>Do you have this in medium?</li>
+            <li>Are you open on Friday?</li>
+            <li>Can I pay by transfer?</li>
+            <li>Where are you located?</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="ask__note">Every one of these has a fixed answer that never changes. That is
+         exactly the work worth handing over, and exactly the work that costs you a customer
+         when it takes forty minutes.</p>
+    </div>
+  </section>
+
   <section class="section" id="honest">
     <div class="wrap">
       <div class="honest">
         <div>
           <div class="shead">
             <h2>The most important thing it does is stop</h2>
-            <p>An assistant that guesses will eventually promise a price you don't charge or a
-               table you don't have. Ours is built to hand the conversation over instead.</p>
+            <p>An assistant that guesses will eventually promise a price you do not charge or a
+               table you do not have. Ours is built to hand the conversation over instead.</p>
           </div>
           <ul class="wont">
-            <li><b>It won't confirm a booking.</b> A person does that, so nothing gets
+            <li><b>It will not confirm a booking.</b> A person does that, so nothing gets
                 double-promised.</li>
-            <li><b>It won't quote a price you haven't given us.</b> No menu item, no answer.</li>
-            <li><b>It won't pretend to know.</b> It says so plainly and passes the customer on.</li>
+            <li><b>It will not quote a price you have not given us.</b> No menu item, no answer.</li>
+            <li><b>It will not pretend to know.</b> It says so plainly and passes the customer on.</li>
           </ul>
         </div>
 
@@ -236,7 +335,7 @@
             <time>7:12 PM</time>
           </div>
           <p class="proof__foot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <span>Every answer comes from information you gave us. Anything outside it goes to a
             human, every time.</span>
           </p>
@@ -245,114 +344,80 @@
     </div>
   </section>
 
-  <section class="section section--alt" id="how-it-works">
+  <section class="section" id="how-it-works">
     <div class="wrap">
-      <div class="shead">
-        <h2>Three steps, and you can stop at any of them</h2>
-      </div>
+      <div class="split">
+        <div class="shead">
+          <h2>Three steps, and you can stop at any of them</h2>
+          <p>Nothing is committed until you have seen it working with your own menu in it.</p>
+        </div>
 
-      <div class="steps">
-        <article class="step">
-          <h3>We talk</h3>
-          <p>You tell us the questions you answer over and over. Fifteen minutes, no cost,
-             no commitment.</p>
-        </article>
-        <article class="step">
-          <h3>We build it</h3>
-          <p>We load your real menu and information in. You test it from your own phone before
-             anyone else sees it.</p>
-        </article>
-        <article class="step">
-          <h3>It goes live</h3>
-          <p>On its own number, so nothing you already rely on changes. We keep it updated as
-             your menu does.</p>
-        </article>
+        <div class="steps">
+          <article class="step">
+            <h3>We talk</h3>
+            <p>You tell us the questions you answer over and over, and we tell you honestly
+               whether this is worth doing for your business. Fifteen minutes, no cost.</p>
+          </article>
+          <article class="step">
+            <h3>We build it</h3>
+            <p>We load your real menu, hours and delivery areas in. You test it from your own
+               phone, and tell us what it got wrong, before a single customer sees it.</p>
+          </article>
+          <article class="step">
+            <h3>It goes live</h3>
+            <p>On its own number, so nothing you already rely on changes. We keep it updated as
+               your menu does, and you can stop the service with a month's notice at any point.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="who-its-for">
-    <div class="wrap">
-      <div class="shead">
-        <h2>Built for businesses that live on WhatsApp</h2>
-      </div>
-
-      <ul class="who">
-        <li>
-          <h3>Restaurants &amp; cafés</h3>
-          <p>Menu, prices, delivery areas, opening hours. Asked a hundred times a week, usually
-             mid-service.</p>
-        </li>
-        <li>
-          <h3>Guesthouses</h3>
-          <p>Airport transfers, ferry times, wifi, check-in, what's nearby. The same dozen
-             questions, every guest.</p>
-        </li>
-        <li>
-          <h3>Salons &amp; small shops</h3>
-          <p>Prices, availability, location, what you stock. Answered instantly instead of when
-             someone's free.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--alt" id="questions">
+  <section class="section" id="questions">
     <div class="wrap">
       <div class="shead">
         <h2>The things owners ask first</h2>
+        <p>Short answers, including the ones that are not entirely in our favour.</p>
       </div>
 
       <div class="faq">
-        <details>
-          <summary>Will it use my current WhatsApp number?</summary>
-          <div class="faq__body">
-            <p>We'd recommend not. A number connected to this system can't be used in the normal
-               WhatsApp app any more. That's Meta's rule, not ours, so we set it up on a separate
-               number and your existing one keeps working exactly as it does today.</p>
+          <div class="faq__item">
+            <h3>Will it use my current WhatsApp number?</h3>
+            <p>We would recommend not. A number connected to this system can no longer be used in
+               the normal WhatsApp app. That is Meta's rule, not ours, so we set it up on a
+               separate number and your existing one keeps working exactly as it does today.</p>
           </div>
-        </details>
-        <details>
-          <summary>What if it doesn't know the answer?</summary>
-          <div class="faq__body">
-            <p>It says so and passes the customer to a person. It's built to answer only from the
+          <div class="faq__item">
+            <h3>What if it doesn't know the answer?</h3>
+            <p>It says so and passes the customer to a person. It is built to answer only from the
                information you give us, and it will never invent a price or confirm a booking.</p>
           </div>
-        </details>
-        <details>
-          <summary>Does it replace my staff?</summary>
-          <div class="faq__body">
-            <p>No. It takes the repetitive questions off whoever's holding the phone during service.
-               Anything that needs a person still gets one.</p>
+          <div class="faq__item">
+            <h3>Does it replace my staff?</h3>
+            <p>No. It takes the repetitive questions off whoever is holding the phone during
+               service. Anything that needs a person still gets one.</p>
           </div>
-        </details>
-        <details>
-          <summary>Can it reply in Dhivehi?</summary>
-          <div class="faq__body">
+          <div class="faq__item">
+            <h3>Can it reply in Dhivehi?</h3>
             <p>Yes. Dhivehi and English, replying in whichever language the customer writes in.</p>
           </div>
-        </details>
-        <details>
-          <summary>How much does it cost?</summary>
-          <div class="faq__body">
+          <div class="faq__item">
+            <h3>How much does it cost?</h3>
             <p>A one-off setup and a small monthly fee that covers running it and keeping your
-               information current. The exact figure depends on your message volume — get in touch
-               and we'll look at it properly.</p>
+               information current. The exact figure depends on your message volume, so get in
+               touch and we will look at it properly.</p>
           </div>
-        </details>
-        <details>
-          <summary>How long until it's working?</summary>
-          <div class="faq__body">
+          <div class="faq__item">
+            <h3>How long until it's working?</h3>
             <p>We can usually show you a working version with your real menu in about two weeks.
-               Going live takes a few weeks more, because Meta runs a business verification process
-               whose speed we don't control. We'll always tell you where it actually stands.</p>
+               Going live takes a few weeks more, because Meta runs a business verification
+               process whose speed we do not control. We will always tell you where it stands.</p>
           </div>
-        </details>
-      </div>
 
-      <p class="faq__more">Something we haven't covered?
-        <a href="#contact">Ask us directly</a> — we'll answer honestly, including when the answer
-        is that this isn't right for you.</p>
+        <p class="faq__more">Something we have not covered?
+          <a href="#contact">Ask us directly</a> and we will answer honestly, including when the
+          answer is that this is not right for you.</p>
+      </div>
     </div>
   </section>
 
@@ -360,7 +425,7 @@
     <div class="wrap">
       <div class="shead">
         <h2>Book a free demo</h2>
-        <p>We'll build a version with your real menu in it so you can test it yourself before
+        <p>We will build a version with your real menu in it so you can test it yourself before
            deciding anything.</p>
       </div>
 
@@ -381,11 +446,16 @@
             </div>
             <div class="field">
               <label for="message">What do customers ask you most?</label>
-              <textarea id="message" name="message"></textarea>
+              <textarea id="message" name="message" placeholder="Delivery areas, opening hours, prices…"></textarea>
             </div>
 
-            <button class="btn btn--teal btn--lg btn--block" type="submit">Send</button>
-            <p class="form__note">No cost and no commitment. We'll reply on WhatsApp.</p>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">
+              Send
+              <span class="btn__disc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </span>
+            </button>
+            <p class="form__note">No cost and no commitment. We will reply on WhatsApp.</p>
             <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -411,31 +481,24 @@
   <div class="wrap">
     <div class="footer__top">
       <div class="footer__blurb">
-        <span class="wordmark wordmark--light">North <em>Haven</em></span>
-        <div class="rule rule--light"></div>
+        <span class="wordmark">North <em>Haven</em></span>
+        <div class="rule"></div>
         <p>Automated customer replies and websites for small businesses in the Maldives.</p>
       </div>
-      <div class="footer__col">
-        <h3>Services</h3>
+      <nav class="footer__nav" aria-label="Footer">
         <a href="#what-we-do">WhatsApp assistant</a>
-        <a href="#what-we-do">Websites</a>
-        <a href="#contact">Book a demo</a>
-      </div>
-      <div class="footer__col">
-        <h3>Company</h3>
         <a href="#how-it-works">How it works</a>
-        <a href="#who-its-for">Who it's for</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer__col">
-        <h3>Legal</h3>
+        <a href="#what-we-do">Websites</a>
+        <a href="#questions">Questions</a>
+        <a href="#contact">Book a demo</a>
+        <a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
-      </div>
+      </nav>
     </div>
     <div class="footer__bottom">
       <span>© <span data-year>2026</span> North Haven. Registered in the Republic of Maldives.</span>
-      <span>hello@northhaven.mv · Malé, Maldives</span>
+      <span>Malé, Maldives</span>
     </div>
   </div>
 </footer>
