@@ -1,7 +1,36 @@
 (function () {
   'use strict';
 
+  var root = document.documentElement;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme */
+  var toggleBtn = document.querySelector('[data-theme-toggle]');
+  if (toggleBtn) {
+    var label = toggleBtn.querySelector('[data-theme-label]');
+
+    var applyTheme = function (mode) {
+      if (mode === 'light') root.setAttribute('data-theme', 'light');
+      else root.setAttribute('data-theme', 'dark');
+
+      var isLight = mode === 'light';
+      toggleBtn.setAttribute('aria-pressed', String(isLight));
+      if (label) label.textContent = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', isLight ? '#FBFAF8' : '#07100F');
+    };
+
+    var stored = null;
+    try { stored = localStorage.getItem('nh-theme'); } catch (e) {}
+    applyTheme(stored === 'light' ? 'light' : 'dark');
+
+    toggleBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      try { localStorage.setItem('nh-theme', next); } catch (e) {}
+    });
+  }
 
   /* header */
   var header = document.querySelector('.site-header');
@@ -14,17 +43,17 @@
   }
 
   /* mobile navigation */
-  var toggle = document.querySelector('.nav__toggle');
+  var navToggle = document.querySelector('.nav__toggle');
   var drawer = document.getElementById('mobile-nav');
 
-  if (toggle && drawer) {
+  if (navToggle && drawer) {
     var setNav = function (open) {
-      toggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-expanded', String(open));
       drawer.setAttribute('data-open', String(open));
     };
 
-    toggle.addEventListener('click', function () {
-      setNav(toggle.getAttribute('aria-expanded') !== 'true');
+    navToggle.addEventListener('click', function () {
+      setNav(navToggle.getAttribute('aria-expanded') !== 'true');
     });
 
     drawer.addEventListener('click', function (e) {
@@ -32,14 +61,14 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
         setNav(false);
-        toggle.focus();
+        navToggle.focus();
       }
     });
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth >= 900) setNav(false);
+      if (window.innerWidth >= 960) setNav(false);
     });
   }
 
@@ -121,10 +150,16 @@
       };
 
       check();
-      if (!started) {
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll, { passive: true });
-      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      window.addEventListener('load', check);
+      setTimeout(check, 400);
+      setTimeout(function () {
+        if (started) return;
+        var r = stage.getBoundingClientRect();
+        if (r.bottom < 0) { started = true; showAll(); if (replay) replay.hidden = false; }
+        else if (r.top < window.innerHeight) { started = true; play(); }
+      }, 2500);
 
       if (replay) {
         replay.addEventListener('click', function () {
@@ -132,6 +167,23 @@
           play();
         });
       }
+    }
+  }
+
+  /* step rules draw when the sequence comes into view */
+  var stepEls = document.querySelectorAll('.step');
+  if (stepEls.length) {
+    if (reduced || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(stepEls, function (el) { el.classList.add('is-in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+      Array.prototype.forEach.call(stepEls, function (el) { io.observe(el); });
     }
   }
 
@@ -172,7 +224,7 @@
       var btn = form.querySelector('button[type="submit"]');
 
       if (endpoint) {
-        if (btn) { btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…'; }
+        if (btn) btn.setAttribute('aria-busy', 'true');
 
         fetch(endpoint, {
           method: 'POST',
@@ -182,13 +234,13 @@
           .then(function (r) {
             if (!r.ok) throw new Error('Request failed');
             form.reset();
-            say('ok', 'Thanks — we’ll message you on WhatsApp shortly.');
+            say('ok', 'Thanks. We’ll message you on WhatsApp shortly.');
           })
           .catch(function () {
-            say('err', 'Something went wrong. Message us directly on WhatsApp instead.');
+            say('err', 'That didn’t send. Message us directly on WhatsApp instead.');
           })
           .finally(function () {
-            if (btn) { btn.removeAttribute('aria-busy'); btn.textContent = 'Send'; }
+            if (btn) btn.removeAttribute('aria-busy');
           });
         return;
       }
@@ -201,14 +253,14 @@
       }
 
       var text =
-        'Hi North Haven — I’d like a demo.\n\n' +
+        'Hi North Haven, I’d like a demo.\n\n' +
         'Name: ' + data.name + '\n' +
         'Business: ' + data.business + '\n' +
         'WhatsApp: ' + data.phone +
         (data.message ? '\n\nMost asked: ' + data.message : '');
 
       window.open('https://wa.me/' + number + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-      say('ok', 'Opening WhatsApp — send the message and we’ll take it from there.');
+      say('ok', 'Opening WhatsApp. Send the message and we’ll take it from there.');
     });
   }
 
