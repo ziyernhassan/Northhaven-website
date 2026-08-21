@@ -1,10 +1,19 @@
-/* North Haven — front-end behaviour
-   No dependencies. Everything degrades gracefully without JS. */
-
 (function () {
   'use strict';
 
-  /* ---------- mobile navigation ---------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* header */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var stick = function () {
+      header.setAttribute('data-stuck', window.pageYOffset > 8 ? 'true' : 'false');
+    };
+    stick();
+    window.addEventListener('scroll', stick, { passive: true });
+  }
+
+  /* mobile navigation */
   var toggle = document.querySelector('.nav__toggle');
   var drawer = document.getElementById('mobile-nav');
 
@@ -19,7 +28,7 @@
     });
 
     drawer.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') setNav(false);
+      if (e.target.closest('a')) setNav(false);
     });
 
     document.addEventListener('keydown', function (e) {
@@ -29,42 +38,104 @@
       }
     });
 
-    // close the drawer if the viewport grows past the desktop breakpoint
     window.addEventListener('resize', function () {
-      if (window.innerWidth >= 860) setNav(false);
+      if (window.innerWidth >= 900) setNav(false);
     });
   }
 
-  /* ---------- reveal on scroll ---------- */
-  var revealables = document.querySelectorAll('[data-reveal]');
+  /* hero conversation */
+  var demo = document.getElementById('demo');
+  var stage = demo && demo.querySelector('.demo__body');
 
-  if (revealables.length) {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (stage) {
+    var steps = Array.prototype.filter.call(stage.children, function (el) {
+      return el.hasAttribute('data-seq') || el.classList.contains('typing');
+    });
+    var replay = demo.querySelector('[data-replay]');
+    var timers = [];
+    var running = false;
 
-    if (reduced || !('IntersectionObserver' in window)) {
-      revealables.forEach(function (el) { el.classList.add('is-in'); });
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-      revealables.forEach(function (el, i) {
-        el.style.transitionDelay = Math.min(i % 3, 2) * 70 + 'ms';
-        io.observe(el);
+    var showAll = function () {
+      steps.forEach(function (el) {
+        if (el.classList.contains('typing')) el.classList.remove('is-on');
+        else el.classList.add('is-in');
       });
+    };
+
+    var reset = function () {
+      timers.forEach(clearTimeout);
+      timers = [];
+      steps.forEach(function (el) {
+        el.classList.remove('is-in');
+        el.classList.remove('is-on');
+      });
+    };
+
+    var play = function () {
+      if (running) return;
+      running = true;
+      reset();
+
+      var at = 260;
+      steps.forEach(function (el) {
+        var hold = parseInt(el.getAttribute('data-hold'), 10);
+        if (isNaN(hold)) hold = 900;
+
+        if (el.classList.contains('typing')) {
+          timers.push(setTimeout(function () { el.classList.add('is-on'); }, at));
+          timers.push(setTimeout(function () { el.classList.remove('is-on'); }, at + hold));
+        } else {
+          timers.push(setTimeout(function () { el.classList.add('is-in'); }, at));
+        }
+        at += hold;
+      });
+
+      timers.push(setTimeout(function () {
+        running = false;
+        if (replay) replay.hidden = false;
+      }, at + 400));
+    };
+
+    if (reduced) {
+      showAll();
+    } else {
+      var started = false;
+      var check = function () {
+        if (started) return;
+        var r = stage.getBoundingClientRect();
+        if (r.bottom <= 0) {
+          started = true;
+          showAll();
+          if (replay) replay.hidden = false;
+        } else if (r.top < window.innerHeight * 0.88) {
+          started = true;
+          play();
+        }
+      };
+
+      var ticking = false;
+      var onScroll = function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () { ticking = false; check(); });
+      };
+
+      check();
+      if (!started) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+      }
+
+      if (replay) {
+        replay.addEventListener('click', function () {
+          replay.hidden = true;
+          play();
+        });
+      }
     }
   }
 
-  /* ---------- demo request form ----------
-     Two modes:
-       1. data-endpoint set  → POST JSON to the back end
-       2. data-endpoint empty → open WhatsApp with the enquiry pre-filled
-     Mode 2 means the site is useful the day it goes live, before any back end exists. */
-
+  /* demo request form */
   var form = document.getElementById('demo-form');
   var status = document.getElementById('form-status');
 
@@ -98,10 +169,10 @@
       };
 
       var endpoint = form.getAttribute('data-endpoint');
+      var btn = form.querySelector('button[type="submit"]');
 
       if (endpoint) {
-        var btn = form.querySelector('button[type="submit"]');
-        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        if (btn) { btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…'; }
 
         fetch(endpoint, {
           method: 'POST',
@@ -117,13 +188,18 @@
             say('err', 'Something went wrong. Message us directly on WhatsApp instead.');
           })
           .finally(function () {
-            if (btn) { btn.disabled = false; btn.textContent = 'Send'; }
+            if (btn) { btn.removeAttribute('aria-busy'); btn.textContent = 'Send'; }
           });
         return;
       }
 
-      // fallback — hand off to WhatsApp
       var number = (form.getAttribute('data-whatsapp') || '').replace(/\D/g, '');
+
+      if (!number) {
+        say('err', 'Our WhatsApp number isn’t set up yet. Please email hello@northhaven.mv.');
+        return;
+      }
+
       var text =
         'Hi North Haven — I’d like a demo.\n\n' +
         'Name: ' + data.name + '\n' +
@@ -131,20 +207,15 @@
         'WhatsApp: ' + data.phone +
         (data.message ? '\n\nMost asked: ' + data.message : '');
 
-      if (!number) {
-        say('err', 'Our WhatsApp number isn’t set up yet. Please email hello@northhaven.mv.');
-        return;
-      }
-
       window.open('https://wa.me/' + number + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
       say('ok', 'Opening WhatsApp — send the message and we’ll take it from there.');
     });
   }
 
-  /* ---------- year in footer ---------- */
+  /* footer year */
   var years = document.querySelectorAll('[data-year]');
   if (years.length) {
     var y = String(new Date().getFullYear());
-    years.forEach(function (el) { el.textContent = y; });
+    Array.prototype.forEach.call(years, function (el) { el.textContent = y; });
   }
 })();
