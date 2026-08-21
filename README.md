@@ -1,57 +1,49 @@
-# North Haven — website front end
+# North Haven — website
 
-The real front end for `northhaven.mv`.
-
-Plain HTML, CSS and JavaScript.
+Static HTML, CSS and JavaScript. No build step, no framework, no dependencies.
 
 ```
-north-haven-site/
-├── index.html          home page
-├── privacy.html        Privacy Policy
-├── terms.html          Terms of Service
-├── assets/
-│   ├── styles.css      the whole design system
-│   └── main.js         mobile nav, scroll reveal, contact form
-└── README.md
+index.html          home
+privacy.html        Privacy Policy
+terms.html          Terms of Service
+assets/styles.css
+assets/main.js
 ```
----
 
-## What's in it
+## Fill in before launch
 
-**Design.** Colours: ink `#0B1F2A`, teal `#0F766E`,
-sand `#D9A441`, warm canvas `#FBFAF8`. Fraunces for headings, DM Sans for everything else,
-loaded from Google Fonts. Every value is a CSS custom property at the top of `styles.css`.
+| What | Where | Now |
+|---|---|---|
+| WhatsApp number | `index.html` → `data-whatsapp="9607000000"` | placeholder |
+| WhatsApp number | `index.html` → Business details | `—` |
+| Registration no. | `index.html` → Business details | `—` |
+| Registered name | `index.html` → Business details | must match the certificate exactly |
+| Domain | all pages → `canonical`, `og:url` | `https://northhaven.mv/` |
+| Email | all pages | `hello@northhaven.mv` |
 
-**Accessibility.** Skip link, one `h1` per page, visible focus rings, 44px tap targets, labelled
-form fields, `aria-expanded` on the menu, live region on form status, and full keyboard operation.
-The FAQ uses native `<details>`, so it works with no JavaScript at all.
+## Contact form
 
-**Robustness.** Content is visible without JavaScript — the scroll-reveal animation is scoped to a
-`.js` class that only exists once the script runs. If JS fails, the page still reads correctly.
-`prefers-reduced-motion` is respected throughout.
+`#demo-form` has two modes, set by `data-endpoint`.
 
-**Performance.** No frameworks, no images, inline SVG icons. Two fonts are the only external
-request.
+- **Empty** — opens WhatsApp with the enquiry pre-filled.
+- **A URL** — POSTs `{ name, business, phone, message }` as JSON. Any 2xx is success.
 
-**SEO.** Per-page titles and descriptions, canonical URLs, Open Graph tags, and
-`ProfessionalService` structured data on the home page.
+## Deploy
 
----
+Upload the four files and the `assets` folder to any static host. Then point the domain at it and
+enable HTTPS.
 
-## Verified
+## Design tokens
 
-Checked in headless Chromium at 390px, 768px and 1440px:
+Every colour, font and radius is a custom property at the top of `assets/styles.css`.
 
-- No horizontal overflow at any width
-- Mobile drawer opens, closes on link tap, closes on Escape, closes on resize past 860px
-- Exactly one `h1` per page, no console errors, no broken internal links
-- Content fully visible with JavaScript disabled
+```
+ink #0B1F2A · teal #0F766E · sand #D9A441 · canvas #FBFAF8
+Fraunces (headings) · DM Sans (body)
+```
 
----
+## Still missing
 
-## Still to add later
-
-- `og:image` — a 1200×630 social preview card
-- `favicon.ico` — once there's a mark to use
-- A real form endpoint, when the back end exists
-- Client work as case studies, once the first pilot is live
+- `og:image` — 1200×630 social card
+- `favicon.ico`
+- A real form endpoint
