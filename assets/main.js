@@ -240,6 +240,14 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
+      /* bots fill every field they find; people never see this one */
+      var trap = form.elements.company_website;
+      if (trap && trap.value) {
+        form.reset();
+        say('ok', 'Thanks. We\u2019ll message you on WhatsApp shortly.');
+        return;
+      }
+
       var required = ['name', 'business', 'phone'];
       var missing = required.filter(function (n) {
         return !form.elements[n] || !form.elements[n].value.trim();
