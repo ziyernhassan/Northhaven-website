@@ -20,9 +20,17 @@
 
 <script>
 (function(){
-  var d=document.documentElement;
+  var d=document.documentElement,t;
   d.classList.add('js');
-  try{var t=localStorage.getItem('nh-theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}
+  try{
+    t=localStorage.getItem('nh-theme');
+    if(t!=='light'&&t!=='dark'){
+      t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+    }
+  }catch(e){t='dark';}
+  d.setAttribute('data-theme',t);
+  var m=document.querySelector('meta[name="theme-color"]');
+  if(m)m.setAttribute('content',t==='light'?'#FBFAF8':'#07100F');
 })();
 </script>
 
@@ -60,7 +68,7 @@
       </ul>
 
       <div class="nav__end">
-        <button class="theme" type="button" data-theme-toggle aria-pressed="false">
+        <button class="theme" type="button" data-theme-toggle>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="8.5"/>
             <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>

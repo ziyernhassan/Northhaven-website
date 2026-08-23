@@ -8,22 +8,35 @@
   var toggleBtn = document.querySelector('[data-theme-toggle]');
   if (toggleBtn) {
     var label = toggleBtn.querySelector('[data-theme-label]');
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+
+    var storedTheme = function () {
+      try {
+        var t = localStorage.getItem('nh-theme');
+        return (t === 'light' || t === 'dark') ? t : null;
+      } catch (e) { return null; }
+    };
+
+    var systemTheme = function () { return mq && mq.matches ? 'light' : 'dark'; };
 
     var applyTheme = function (mode) {
-      if (mode === 'light') root.setAttribute('data-theme', 'light');
-      else root.setAttribute('data-theme', 'dark');
+      root.setAttribute('data-theme', mode);
 
       var isLight = mode === 'light';
-      toggleBtn.setAttribute('aria-pressed', String(isLight));
       if (label) label.textContent = isLight ? 'Switch to dark theme' : 'Switch to light theme';
 
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', isLight ? '#FBFAF8' : '#07100F');
     };
 
-    var stored = null;
-    try { stored = localStorage.getItem('nh-theme'); } catch (e) {}
-    applyTheme(stored === 'light' ? 'light' : 'dark');
+    applyTheme(storedTheme() || systemTheme());
+
+    /* no explicit choice yet, so track the operating system live */
+    if (mq && mq.addEventListener) {
+      mq.addEventListener('change', function () {
+        if (!storedTheme()) applyTheme(systemTheme());
+      });
+    }
 
     toggleBtn.addEventListener('click', function () {
       var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -47,28 +60,54 @@
   var drawer = document.getElementById('mobile-nav');
 
   if (navToggle && drawer) {
+    var isNavOpen = function () { return navToggle.getAttribute('aria-expanded') === 'true'; };
+
     var setNav = function (open) {
       navToggle.setAttribute('aria-expanded', String(open));
       drawer.setAttribute('data-open', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        var first = drawer.querySelector('a');
+        if (first) first.focus();
+      }
     };
 
     navToggle.addEventListener('click', function () {
-      setNav(navToggle.getAttribute('aria-expanded') !== 'true');
+      setNav(!isNavOpen());
     });
 
     drawer.addEventListener('click', function (e) {
       if (e.target.closest('a')) setNav(false);
     });
 
+    /* while the drawer is open it is the only thing you can reach */
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      if (!isNavOpen()) return;
+
+      if (e.key === 'Escape') {
         setNav(false);
         navToggle.focus();
+        return;
       }
+
+      if (e.key !== 'Tab') return;
+
+      var stops = [navToggle].concat(
+        Array.prototype.slice.call(drawer.querySelectorAll('a'))
+      );
+      var i = stops.indexOf(document.activeElement);
+      if (i === -1) return;
+
+      var next = e.shiftKey ? i - 1 : i + 1;
+      if (next < 0) next = stops.length - 1;
+      if (next >= stops.length) next = 0;
+
+      e.preventDefault();
+      stops[next].focus();
     });
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth >= 960) setNav(false);
+      if (window.innerWidth >= 960 && isNavOpen()) setNav(false);
     });
   }
 
