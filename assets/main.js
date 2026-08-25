@@ -226,6 +226,24 @@
     }
   }
 
+  /* scroll reveals — CSS keeps the hidden state behind html.js AND
+     prefers-reduced-motion, so both fall back to a static page */
+  var revealEls = document.querySelectorAll('[data-reveal],[data-reveal-group]');
+  if (revealEls.length) {
+    if (reduced || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('is-in'); });
+    } else {
+      var rio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          rio.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      Array.prototype.forEach.call(revealEls, function (el) { rio.observe(el); });
+    }
+  }
+
   /* demo request form */
   var form = document.getElementById('demo-form');
   var status = document.getElementById('form-status');
@@ -257,6 +275,13 @@
         say('err', 'Please fill in your name, business name and WhatsApp number.');
         var first = form.elements[missing[0]];
         if (first) first.focus();
+        return;
+      }
+
+      /* loose sanity check only — we dial the real number ourselves */
+      if (form.elements.phone && form.elements.phone.value.replace(/\D/g, '').length < 7) {
+        say('err', 'That WhatsApp number looks too short. Please check it and try again.');
+        form.elements.phone.focus();
         return;
       }
 

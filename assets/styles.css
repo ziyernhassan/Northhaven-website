@@ -1,72 +1,8 @@
 /* ============================================================
-   Fonts — self-hosted. No third-party request, no visitor IP
-   leaves the site. Files in assets/fonts/.
+   Type — Times New Roman everywhere (founder's call).
+   A system face: zero font downloads, zero third-party
+   requests, instant first paint on every device.
    ============================================================ */
-
-@font-face{
-  font-family:'Instrument Sans';
-  font-style:italic;
-  font-weight:400 700;
-  font-display:swap;
-  src:url(fonts/instrumentsans-italic-latin-ext.woff2) format('woff2');
-  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family:'Instrument Sans';
-  font-style:italic;
-  font-weight:400 700;
-  font-display:swap;
-  src:url(fonts/instrumentsans-italic-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family:'Instrument Sans';
-  font-style:normal;
-  font-weight:400 700;
-  font-display:swap;
-  src:url(fonts/instrumentsans-normal-latin-ext.woff2) format('woff2');
-  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family:'Instrument Sans';
-  font-style:normal;
-  font-weight:400 700;
-  font-display:swap;
-  src:url(fonts/instrumentsans-normal-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family:'Instrument Serif';
-  font-style:italic;
-  font-weight:400;
-  font-display:swap;
-  src:url(fonts/instrumentserif-italic-latin-ext.woff2) format('woff2');
-  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family:'Instrument Serif';
-  font-style:italic;
-  font-weight:400;
-  font-display:swap;
-  src:url(fonts/instrumentserif-italic-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face{
-  font-family:'Instrument Serif';
-  font-style:normal;
-  font-weight:400;
-  font-display:swap;
-  src:url(fonts/instrumentserif-normal-latin-ext.woff2) format('woff2');
-  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face{
-  font-family:'Instrument Serif';
-  font-style:normal;
-  font-weight:400;
-  font-display:swap;
-  src:url(fonts/instrumentserif-normal-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* ============================================================
    North Haven — design system
@@ -120,8 +56,8 @@
 
   --r1:8px; --r2:12px; --r3:16px; --r4:24px; --r5:32px;
 
-  --disp:'Instrument Serif',Georgia,'Times New Roman',serif;
-  --sans:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --disp:'Times New Roman',Times,'Liberation Serif',Georgia,serif;
+  --sans:'Times New Roman',Times,'Liberation Serif',Georgia,serif;
 
   --t-xs:.8125rem; --t-sm:.9375rem; --t-base:1.0625rem;
   --t-md:1.1875rem; --t-lg:1.375rem; --t-xl:1.75rem;
@@ -183,6 +119,7 @@ html{
 
 body{
   margin:0;
+  min-height:100vh;
   min-height:100dvh;
   background:var(--bg);
   color:var(--fg);
@@ -193,6 +130,8 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   caret-color:var(--accent);
+  /* hidden is the fallback — clip avoids creating a scroll container */
+  overflow-x:hidden;
   overflow-x:clip;
 }
 
@@ -230,12 +169,17 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 ul,ol{margin:0;padding:0;list-style:none}
 p{margin:0;text-wrap:pretty}
 
+/* author display rules must never defeat the hidden attribute
+   (this exact class of bug shipped once already — keep the guard) */
+[hidden]{display:none!important}
+
 h1,h2,h3,h4{
   margin:0;
   font-family:var(--disp);
   font-weight:400;
-  letter-spacing:-.022em;
-  line-height:1.05;
+  /* Times runs tighter than a humanist sans — ease off the tracking */
+  letter-spacing:-.01em;
+  line-height:1.08;
   text-wrap:balance;
 }
 
@@ -250,6 +194,33 @@ h1,h2,h3,h4{
 .skip:focus{left:0}
 
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- tooltips ----------
+   opt-in via data-tip="…"; shows on hover AND keyboard focus.
+   Ink-on-paper chip inverts per theme automatically. */
+
+[data-tip]{position:relative}
+[data-tip]::after{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 10px);left:50%;
+  transform:translate(-50%,3px);
+  background:var(--fg);color:var(--bg);
+  font-family:var(--sans);font-size:.75rem;line-height:1;
+  padding:7px 10px;border-radius:8px;white-space:nowrap;
+  opacity:0;pointer-events:none;z-index:50;box-shadow:var(--shadow-2);
+  transition:opacity .25s var(--ease),transform .3s var(--spring);
+}
+[data-tip]::before{
+  content:"";position:absolute;bottom:calc(100% + 5px);left:50%;
+  transform:translate(-50%,3px);
+  border:5px solid transparent;border-top-color:var(--fg);
+  opacity:0;pointer-events:none;z-index:50;
+  transition:opacity .25s var(--ease),transform .3s var(--spring);
+}
+[data-tip]:hover::after,[data-tip]:focus-visible::after,
+[data-tip]:hover::before,[data-tip]:focus-visible::before{
+  opacity:1;transform:translate(-50%,0);
+}
 
 /* ---------- layout ---------- */
 
@@ -273,8 +244,8 @@ h1,h2,h3,h4{
 /* ---------- wordmark ---------- */
 
 .wordmark{
-  font-family:var(--disp);font-weight:400;font-size:1.6rem;
-  letter-spacing:-.02em;line-height:1;color:var(--fg);
+  font-family:var(--disp);font-weight:400;font-size:1.7rem;
+  letter-spacing:-.01em;line-height:1;color:var(--fg);
   text-decoration:none;white-space:nowrap;display:inline-block;
 }
 .wordmark em{font-style:italic;color:var(--accent)}
@@ -313,7 +284,7 @@ h1,h2,h3,h4{
 .nav .nav__cta{display:none}
 
 .theme{
-  width:40px;height:40px;display:grid;place-items:center;border-radius:var(--r1);
+  width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r1);
   color:var(--fg-2);border:1px solid transparent;
   transition:color .24s var(--ease),background .24s var(--ease),border-color .24s var(--ease);
 }
@@ -322,7 +293,7 @@ h1,h2,h3,h4{
 .theme:hover svg{transform:rotate(-32deg)}
 
 .nav__toggle{
-  width:40px;height:40px;display:grid;place-items:center;border-radius:var(--r1);
+  width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r1);
   border:1px solid var(--line-2);background:var(--surface);
 }
 .nav__toggle .bar{display:block;width:16px;height:1.5px;background:var(--fg);border-radius:2px;position:relative}
@@ -348,6 +319,9 @@ h1,h2,h3,h4{
   border-bottom:1px solid var(--line);color:var(--fg);
 }
 .nav__drawer a.btn{margin-top:var(--s5);width:100%}
+/* without JS the drawer never opens — show it inline instead so
+   no-JS mobile visitors still get full navigation */
+html:not(.js) .nav__drawer{display:block}
 .js .nav__drawer[data-open="true"] > *{opacity:0;transform:translateY(10px);animation:drawerIn .5s var(--out) forwards}
 .js .nav__drawer[data-open="true"] > *:nth-child(1){animation-delay:.02s}
 .js .nav__drawer[data-open="true"] > *:nth-child(2){animation-delay:.06s}
@@ -416,7 +390,7 @@ h1,h2,h3,h4{
 .hero__grid{display:grid;gap:clamp(48px,6vw,80px);align-items:center}
 @media (min-width:1000px){.hero__grid{grid-template-columns:1.05fr .95fr}}
 
-.hero h1{font-size:var(--t-4xl);letter-spacing:-.028em;margin-bottom:var(--s5)}
+.hero h1{font-size:var(--t-4xl);letter-spacing:-.015em;margin-bottom:var(--s5)}
 .hero h1 em{font-style:italic;color:var(--accent)}
 .hero__lead{font-size:var(--t-md);color:var(--fg-2);max-width:34rem;margin-bottom:var(--s7)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:var(--s3)}
@@ -610,7 +584,9 @@ h1,h2,h3,h4{
 .field{margin-bottom:var(--s4)}
 .field label{display:block;font-size:var(--t-xs);font-weight:600;margin-bottom:var(--s2);color:var(--fg-2)}
 .field input,.field textarea{
-  width:100%;font:inherit;font-size:var(--t-sm);color:var(--fg);
+  width:100%;font:inherit;
+  /* 16px+ stops iOS Safari zooming the field on focus */
+  font-size:1rem;color:var(--fg);
   background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r2);
   padding:var(--s3) var(--s4);
   transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
@@ -671,6 +647,51 @@ h1,h2,h3,h4{
 .legal a{color:var(--accent)}
 .legal .summary{background:var(--surface);border-radius:var(--r3);padding:var(--s5) var(--s6);margin-bottom:var(--s8)}
 .legal .summary p{margin-bottom:0;color:var(--fg)}
+.legal .cta-row{margin-top:var(--s8)}
+
+/* ---------- authored motion ----------
+   Everything here is doubly gated: html.js (no-JS visitors see a
+   static page) AND prefers-reduced-motion (motion opt-outs see it
+   too). Nothing below runs unless both boxes are ticked. */
+
+@media (prefers-reduced-motion:no-preference){
+
+  /* hero copy rises in on first paint */
+  .js .hero [data-rise]{opacity:0;transform:translateY(22px);animation:heroRise .9s var(--out) forwards}
+  .js .hero [data-rise="2"]{animation-delay:.1s}
+  .js .hero [data-rise="3"]{animation-delay:.2s}
+  .js .hero [data-rise="4"]{animation-delay:.3s}
+
+  /* the phone breathes */
+  .js .demo__phone{animation:float 7s ease-in-out 1.2s infinite alternate}
+
+  /* scroll reveals */
+  .js [data-reveal]{
+    opacity:0;transform:translateY(20px);
+    transition:opacity .75s var(--out),transform .75s var(--out);
+    transition-delay:var(--rd,0ms);
+  }
+  .js [data-reveal].is-in{opacity:1;transform:none}
+
+  .js [data-reveal-group] > *{
+    opacity:0;transform:translateY(14px);
+    transition:opacity .65s var(--out),transform .65s var(--out);
+  }
+  .js [data-reveal-group].is-in > *{opacity:1;transform:none}
+  .js [data-reveal-group].is-in > *:nth-child(1){transition-delay:0s}
+  .js [data-reveal-group].is-in > *:nth-child(2){transition-delay:.07s}
+  .js [data-reveal-group].is-in > *:nth-child(3){transition-delay:.14s}
+  .js [data-reveal-group].is-in > *:nth-child(4){transition-delay:.21s}
+  .js [data-reveal-group].is-in > *:nth-child(5){transition-delay:.28s}
+  .js [data-reveal-group].is-in > *:nth-child(6){transition-delay:.35s}
+  .js [data-reveal-group].is-in > *:nth-child(7){transition-delay:.42s}
+  .js [data-reveal-group].is-in > *:nth-child(8){transition-delay:.49s}
+  .js [data-reveal-group].is-in > *:nth-child(9){transition-delay:.56s}
+  .js [data-reveal-group].is-in > *:nth-child(n+10){transition-delay:.63s}
+}
+
+@keyframes heroRise{to{opacity:1;transform:none}}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-8px)}}
 
 /* ---------- reduced motion ---------- */
 
@@ -684,4 +705,10 @@ h1,h2,h3,h4{
   .js .typing{display:none!important}
   .js .hero__aura{animation:none}
   .step::after{transform:scaleX(1)}
+
+  /* motion additions: land everything in its final state */
+  .js .hero [data-rise]{opacity:1;transform:none;animation:none}
+  .js .demo__phone{animation:none}
+  .js [data-reveal],
+  .js [data-reveal-group] > *{opacity:1!important;transform:none!important;transition:none!important}
 }

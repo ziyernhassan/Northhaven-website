@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>North Haven — Automated WhatsApp replies for Maldivian businesses</title>
+<title>North Haven — WhatsApp assistants for Maldivian businesses</title>
 <meta name="description" content="North Haven builds automated assistants that answer your customers' WhatsApp messages instantly, from your menu, hours and delivery areas, so nobody waits. Websites too. Based in Malé, Maldives.">
 <link rel="canonical" href="https://northhaven.mv/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://northhaven.mv/">
 <meta property="og:site_name" content="North Haven">
-<meta property="og:title" content="North Haven — Automated WhatsApp replies for Maldivian businesses">
+<meta property="og:title" content="North Haven — WhatsApp assistants for Maldivian businesses">
 <meta property="og:description" content="Your customers get an answer in seconds. Even at midnight. Automated WhatsApp assistants and websites for small businesses in the Maldives.">
 <meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://northhaven.mv/assets/og.png">
@@ -20,7 +20,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07100F">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307100F'/%3E%3Ctext x='16' y='23.5' font-family='Georgia,serif' font-size='21' fill='%234FD1B9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <script>
 (function(){
@@ -38,8 +39,6 @@
 })();
 </script>
 
-<link rel="preload" href="assets/fonts/instrumentsans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/instrumentserif-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 
 <script type="application/ld+json">
@@ -51,7 +50,13 @@
   "url":"https://northhaven.mv/",
   "email":"hello@northhaven.mv",
   "areaServed":{"@type":"Country","name":"Maldives"},
-  "address":{"@type":"PostalAddress","addressLocality":"Malé","addressCountry":"MV"}
+  "address":{"@type":"PostalAddress","addressLocality":"Malé","addressCountry":"MV"},
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+    "opens":"09:00",
+    "closes":"18:00"
+  }]
 }
 </script>
 <script type="application/ld+json">
@@ -128,7 +133,7 @@
       </ul>
 
       <div class="nav__end">
-        <button class="theme" type="button" data-theme-toggle>
+        <button class="theme" type="button" data-theme-toggle data-tip="Dark / light">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="8.5"/>
             <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>
@@ -163,13 +168,13 @@
       <div class="hero__grid">
 
         <div>
-          <h1>Your customers get an answer <em>in seconds.</em> Even at midnight.</h1>
-          <p class="hero__lead">
+          <h1 data-rise>Your customers get an answer <em>in seconds.</em> Even at midnight.</h1>
+          <p class="hero__lead" data-rise="2">
             North Haven builds automated assistants that answer your customers' WhatsApp messages
             instantly, using your menu, your hours and your delivery areas. Nobody waits, nothing
             gets missed. We build the websites too.
           </p>
-          <div class="hero__actions">
+          <div class="hero__actions" data-rise="3">
             <a class="btn btn--primary btn--lg" href="#contact">
               Book a free demo
               <span class="btn__disc" aria-hidden="true">
@@ -183,11 +188,11 @@
               </span>
             </a>
           </div>
-          <p class="hero__where">Malé, Maldives</p>
+          <p class="hero__where" data-rise="4">Malé, Maldives</p>
         </div>
 
         <div class="demo" id="demo">
-          <div class="demo__tray">
+          <div class="demo__tray" data-rise="2">
             <div class="demo__phone">
               <div class="demo__bar">
                 <span class="demo__av" aria-hidden="true">S</span>
@@ -238,7 +243,7 @@
 
   <div class="band">
     <div class="wrap">
-      <ul>
+      <ul data-reveal-group>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13.5H12l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>
           <span><b>Instant replies.</b> Every hour of the day, including the ones you are asleep for.</span>
@@ -257,13 +262,13 @@
 
   <section class="section" id="what-we-do">
     <div class="wrap">
-      <div class="shead">
+      <div class="shead" data-reveal>
         <h2>Two things, done properly</h2>
         <p>Most small businesses here lose customers to a slow reply, not to a competitor's
            cooking. We fix the reply first, and build the website if you need one.</p>
       </div>
 
-      <article class="svc">
+      <article class="svc" data-reveal>
         <div>
           <div class="svc__mark">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
@@ -283,7 +288,7 @@
         </ul>
       </article>
 
-      <article class="svc" id="websites">
+      <article class="svc" id="websites" data-reveal>
         <div>
           <div class="svc__mark">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8.5 20.5h7M12 16.5v4"/></svg>
@@ -307,7 +312,7 @@
 
   <section class="section" id="what-it-answers">
     <div class="wrap">
-      <div class="shead">
+      <div class="shead" data-reveal>
         <h2>The questions you answer every single day</h2>
         <p>These are the real messages small businesses in Malé get, over and over, usually at
            the worst possible moment. The assistant takes all of them.</p>
@@ -319,7 +324,7 @@
             <h3>Restaurants &amp; cafés</h3>
             <p>Asked a hundred times a week, usually mid-service.</p>
           </div>
-          <ul class="ask__chips">
+          <ul class="ask__chips" data-reveal-group>
             <li>Are you open now?</li>
             <li>Do you deliver to Hulhumalé?</li>
             <li>What's the delivery charge?</li>
@@ -338,7 +343,7 @@
             <h3>Guesthouses</h3>
             <p>The same dozen questions, from every single guest.</p>
           </div>
-          <ul class="ask__chips">
+          <ul class="ask__chips" data-reveal-group>
             <li>Do you arrange airport transfer?</li>
             <li>What time is the ferry?</li>
             <li>Is breakfast included?</li>
@@ -356,7 +361,7 @@
             <h3>Salons &amp; small shops</h3>
             <p>Answered instantly instead of whenever someone is free.</p>
           </div>
-          <ul class="ask__chips">
+          <ul class="ask__chips" data-reveal-group>
             <li>How much for a haircut?</li>
             <li>Are you free at four?</li>
             <li>Do you do bridal?</li>
@@ -368,7 +373,7 @@
         </div>
       </div>
 
-      <p class="ask__note">Every one of these has a fixed answer that never changes. That is
+      <p class="ask__note" data-reveal>Every one of these has a fixed answer that never changes. That is
          exactly the work worth handing over, and exactly the work that costs you a customer
          when it takes forty minutes.</p>
     </div>
@@ -378,7 +383,7 @@
     <div class="wrap">
       <div class="honest">
         <div>
-          <div class="shead">
+          <div class="shead" data-reveal>
             <h2>The most important thing it does is stop</h2>
             <p>An assistant that guesses will eventually promise a price you do not charge or a
                table you do not have. Ours is built to hand the conversation over instead.</p>
@@ -391,7 +396,7 @@
           </ul>
         </div>
 
-        <div class="proof">
+        <div class="proof" data-reveal>
           <div class="msg msg--in">
             Can you hold a table for six tomorrow at 8?
             <time>7:12 PM</time>
@@ -414,7 +419,7 @@
   <section class="section" id="how-it-works">
     <div class="wrap">
       <div class="split">
-        <div class="shead">
+        <div class="shead" data-reveal>
           <h2>Three steps, and you can stop at any of them</h2>
           <p>Nothing is committed until you have seen it working with your own menu in it.</p>
         </div>
@@ -442,12 +447,12 @@
 
   <section class="section" id="questions">
     <div class="wrap">
-      <div class="shead">
+      <div class="shead" data-reveal>
         <h2>The things owners ask first</h2>
         <p>Short answers, including the ones that are not entirely in our favour.</p>
       </div>
 
-      <div class="faq">
+      <div class="faq" data-reveal-group>
           <div class="faq__item">
             <h3>Will it use my current WhatsApp number?</h3>
             <p>We would recommend not. A number connected to this system can no longer be used in
@@ -490,15 +495,15 @@
 
   <section class="section" id="contact">
     <div class="wrap">
-      <div class="shead">
+      <div class="shead" data-reveal>
         <h2>Book a free demo</h2>
         <p>We will build a version with your real menu in it so you can test it yourself before
            deciding anything.</p>
       </div>
 
       <div class="contact">
-        <div>
-          <form id="demo-form" data-endpoint="" data-whatsapp="9607000000" novalidate>
+        <div data-reveal>
+          <form id="demo-form" data-endpoint="/api/lead" data-whatsapp="9607000000" novalidate>
             <div class="hp" aria-hidden="true">
               <label for="company-website">Company website</label>
               <input type="text" id="company-website" name="company_website" tabindex="-1" autocomplete="off">
@@ -529,16 +534,19 @@
             <p class="form__note">No cost and no commitment. We will reply on WhatsApp.</p>
             <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
           </form>
+          <noscript>
+            <p class="form__note">This form needs JavaScript. Message us directly on
+            WhatsApp or email <a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a>.</p>
+          </noscript>
         </div>
 
-        <aside class="details">
+        <aside class="details" data-reveal>
           <h3>Business details</h3>
           <dl>
             <div class="row"><dt>Registered name</dt><dd>North Haven</dd></div>
-            <div class="row"><dt>Registration no.</dt><dd>—</dd></div>
             <div class="row"><dt>Address</dt><dd>Malé, Maldives</dd></div>
-            <div class="row"><dt>Email</dt><dd><a href="mailto:hello@northhaven.mv">hello@northhaven.mv</a></dd></div>
-            <div class="row"><dt>WhatsApp</dt><dd>—</dd></div>
+            <div class="row"><dt>Email</dt><dd><a href="mailto:hello@northhaven.mv" data-tip="Opens your email app">hello@northhaven.mv</a></dd></div>
+            <div class="row"><dt>WhatsApp</dt><dd><a href="https://wa.me/9607000000" data-tip="Opens a WhatsApp chat">+960 700-0000</a></dd></div>
             <div class="row"><dt>Hours</dt><dd>Sun–Thu, 9am–6pm</dd></div>
           </dl>
         </aside>
