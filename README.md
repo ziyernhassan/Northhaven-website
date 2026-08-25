@@ -137,6 +137,14 @@ The hero conversation replay is untouched. `[hidden]{display:none!important}`
 guards the stylesheet so author display rules can never resurrect a hidden
 element (this bug class shipped once — the guard stays).
 
+## Backend status
+
+Cloudflare Pages setup completed:
+
+- [x] D1 database `nh_leads` created; `d1-migrations/0001_leads.sql` applied
+- [x] D1 binding **`DB`** attached to the Pages project
+- [x] `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` stored as encrypted Secrets
+
 ## Still open
 
 Tracked in the launch checklist artifact; all of these are blocked on information we do
