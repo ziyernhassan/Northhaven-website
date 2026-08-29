@@ -1,4 +1,4 @@
-# North Haven — website
+# Vanta Haven — website
 
 Static HTML, CSS and JavaScript. No build step, no framework, no dependencies, no
 third-party requests at runtime.
@@ -27,7 +27,7 @@ assets/og.png       1200×630 social card
 | WhatsApp number | `index.html` → Business details row + `wa.me` link | same placeholder, both must change together |
 | Registration no. | `index.html` → Business details | row hidden until the number exists — do not ship an em-dash placeholder |
 | Registered name | `index.html` → Business details | must match the certificate exactly |
-| Domain | all pages → `canonical`, `og:*`, `sitemap.xml`, `robots.txt`, `llms.txt` | `https://northhaven.mv/` |
+| Domain | all pages → `canonical`, `og:*`, `sitemap.xml`, `robots.txt`, `llms.txt` | `https://vantahaven.mv/` |
 
 The WhatsApp number is launch-blocking: with no form endpoint set, the deep link is the
 form's only path, so an unset number means the contact form goes nowhere.
@@ -36,11 +36,11 @@ form's only path, so an unset number means the contact form goes nowhere.
 
 Blocked on owning the domain. Once DNS is live:
 
-1. Create a GSC property for `https://northhaven.mv`
+1. Create a GSC property for `https://vantahaven.mv`
 2. Verify — easiest on Cloudflare Pages is the **DNS TXT record** method (no HTML edit);
    otherwise add the `<meta name="google-site-verification" content="…">` line to all
    four pages' heads
-3. Submit `https://northhaven.mv/sitemap.xml` under Sitemaps
+3. Submit `https://vantahaven.mv/sitemap.xml` under Sitemaps
 4. After launch, request indexing for `/`
 
 Do not commit a made-up verification token "so it's ready" — GSC rejects unknown tokens
