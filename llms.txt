@@ -1,8 +1,8 @@
-# North Haven
+# Vanta Haven
 
 > Automated WhatsApp assistants and websites for small businesses in the Maldives.
 
-North Haven builds AI assistants that answer a business's customers on WhatsApp instantly,
+Vanta Haven builds AI assistants that answer a business's customers on WhatsApp instantly,
 using only that business's own information: menu, prices, opening hours, delivery areas,
 airport transfers and similar. Replies are in Dhivehi or English, matching the customer.
 The assistant never invents prices, never confirms bookings and never takes payments —
@@ -12,15 +12,15 @@ assistant embedded are built on request.
 ## Business
 
 - Location: Malé, Maldives
-- Contact: hello@northhaven.mv
+- Contact: vantahaven@gmail.com
 - Hours: Sunday–Thursday, 9am–6pm (Malé time)
 - Model: one-off setup fee plus a monthly retainer; quotes depend on message volume
 
 ## Pages
 
-- [Home](https://northhaven.mv/): what the assistant does, what it answers, how it works, FAQ, demo request form
-- [Privacy Policy](https://northhaven.mv/privacy.html): how visitor enquiries and clients' customer conversations are handled
-- [Terms of Service](https://northhaven.mv/terms.html): scope of service, responsibilities, fees, liability
+- [Home](https://vantahaven.mv/): what the assistant does, what it answers, how it works, FAQ, demo request form
+- [Privacy Policy](https://vantahaven.mv/privacy): how visitor enquiries and clients' customer conversations are handled
+- [Terms of Service](https://vantahaven.mv/terms): scope of service, responsibilities, fees, liability
 
 ## Key facts
 

@@ -320,12 +320,12 @@
       var number = (form.getAttribute('data-whatsapp') || '').replace(/\D/g, '');
 
       if (!number) {
-        say('err', 'Our WhatsApp number isn’t set up yet. Please email hello@northhaven.mv.');
+        say('err', 'Our WhatsApp number isn’t set up yet. Please email vantahaven@gmail.com.');
         return;
       }
 
       var text =
-        'Hi North Haven, I’d like a demo.\n\n' +
+        'Hi Vanta Haven, I’d like a demo.\n\n' +
         'Name: ' + data.name + '\n' +
         'Business: ' + data.business + '\n' +
         'WhatsApp: ' + data.phone +
