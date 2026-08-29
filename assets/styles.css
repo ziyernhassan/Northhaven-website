@@ -248,7 +248,7 @@ h1,h2,h3,h4{
   letter-spacing:-.01em;line-height:1;color:var(--fg);
   text-decoration:none;white-space:nowrap;display:inline-block;
 }
-.wordmark em{font-style:italic;color:var(--accent)}
+.wordmark em{font-style:normal;color:var(--accent)}
 
 .rule{height:1px;width:88px;background:var(--accent-line);position:relative;margin-block:var(--s5)}
 .rule::after{content:"";position:absolute;right:0;top:0;height:1px;width:28%;background:var(--sand)}
