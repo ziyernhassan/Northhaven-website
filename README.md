@@ -23,7 +23,7 @@ assets/og.png       1200×630 social card
 
 | What | Where | Now |
 |---|---|---|
-| WhatsApp number | `index.html` → `data-whatsapp="9607000000"` | **placeholder** |
+| WhatsApp number | `index.html` → `data-whatsapp="9609411120"` | ✅ set (9411120) |
 | WhatsApp number | `index.html` → Business details row + `wa.me` link | same placeholder, both must change together |
 | Registration no. | `index.html` → Business details | row hidden until the number exists — do not ship an em-dash placeholder |
 | Registered name | `index.html` → Business details | must match the certificate exactly |
