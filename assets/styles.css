@@ -243,12 +243,115 @@ h1,h2,h3,h4{
 
 /* ---------- wordmark ---------- */
 
-.wordmark{
-  font-family:var(--disp);font-weight:400;font-size:1.7rem;
-  letter-spacing:-.01em;line-height:1;color:var(--fg);
-  text-decoration:none;white-space:nowrap;display:inline-block;
+/* Poppins, self-hosted and subset to the six glyphs the wordmark uses
+   (V A N T H E, both cases). 1.1 KB per weight. Self-hosted on purpose:
+   _headers sets font-src 'self' and style-src 'self', so a Google Fonts
+   link would be BLOCKED and fall back to system-ui with no error anywhere —
+   and the README's "no third-party requests at runtime" still holds. */
+@font-face{
+  font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;
+  src:url('fonts/poppins-300.woff2') format('woff2');
 }
-.wordmark em{font-style:normal;color:var(--accent)}
+@font-face{
+  font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;
+  src:url('fonts/poppins-600.woff2') format('woff2');
+}
+
+/* A3 — the standard logo. Hollow diamond carrying the mint-to-sand ramp on
+   its edge, then VANTA light, then HAVEN with the same ramp filling the
+   letterforms.
+
+   The lock-up degrades in two steps as space runs out:
+     .wordmark            A3  full     ◇ VANTA HAVEN
+     .wordmark.is-mono    C3  monogram ◇ VH
+     .wordmark.is-mark    C4  mark     ◇
+   Both narrower states animate from the one before rather than swapping,
+   so a resize reads as the logo folding up, not as a different logo. */
+
+.wordmark{
+  font-family:'Poppins',var(--sans);
+  font-weight:300;font-size:1.36rem;line-height:1;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fg);text-decoration:none;white-space:nowrap;
+  display:inline-flex;align-items:center;
+}
+
+/* the diamond: a rotated square, so it stays crisp at any size and needs no
+   SVG. The gradient sits on the BORDER via a mask, which is the only way to
+   ramp an outline in CSS. */
+.wordmark__mark{
+  flex:none;display:inline-block;
+  width:.56em;height:.56em;margin-right:.5em;
+  transform:rotate(45deg);
+  border:.09em solid transparent;
+  background:linear-gradient(135deg,var(--accent),var(--sand)) border-box;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  transition:width .34s cubic-bezier(.4,0,.2,1),height .34s cubic-bezier(.4,0,.2,1),
+             margin .34s cubic-bezier(.4,0,.2,1);
+}
+
+/* "VANTA" — plain, and the part that collapses first */
+.wordmark__v{
+  font-weight:300;
+  display:inline-block;overflow:hidden;
+  max-width:8em;opacity:1;
+  transition:max-width .34s cubic-bezier(.4,0,.2,1),margin .34s cubic-bezier(.4,0,.2,1),opacity .2s ease .06s;
+}
+
+/* "HAVEN" — the gradient. background-clip:text needs a transparent colour,
+   which is why any glow on this has to be filter:drop-shadow and never
+   text-shadow (a text-shadow paints behind the glyphs and shows through). */
+.wordmark__h{
+  font-weight:600;
+  /* letter-spacing alone left VANTAHAVEN reading as a single word */
+  margin-left:.34em;
+  background:linear-gradient(96deg,var(--accent) 10%,var(--sand) 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;overflow:hidden;
+  max-width:8em;opacity:1;
+  transition:max-width .34s cubic-bezier(.4,0,.2,1),margin .34s cubic-bezier(.4,0,.2,1),opacity .2s ease .06s;
+}
+
+/* the monogram's "H" — present in the DOM at all times so the transition has
+   something to animate to; zero-width until the mono state calls for it */
+.wordmark__mono{
+  font-weight:600;
+  margin-left:.08em;
+  background:linear-gradient(96deg,var(--accent) 10%,var(--sand) 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;overflow:hidden;
+  max-width:0;opacity:0;
+  transition:max-width .34s cubic-bezier(.4,0,.2,1),opacity .2s ease;
+}
+
+/* C3 — monogram. VANTA collapses to its V, HAVEN collapses away, the mono H
+   opens. Result: a gradient VH beside the mark. */
+.wordmark.is-mono .wordmark__v{max-width:.86em;}
+.wordmark.is-mono .wordmark__h{max-width:0;opacity:0;margin-left:0;}
+.wordmark.is-mono .wordmark__mono{max-width:1.2em;opacity:1;}
+
+/* C4 — mark alone. Everything but the diamond folds away and the diamond
+   grows to hold the same optical weight. */
+.wordmark.is-mark .wordmark__v,
+.wordmark.is-mark .wordmark__h,
+.wordmark.is-mark .wordmark__mono{max-width:0;opacity:0;margin-left:0;}
+.wordmark.is-mark .wordmark__mark{width:.86em;height:.86em;margin-right:0;}
+
+/* Motion is decoration here — the states must still be reachable without it */
+@media (prefers-reduced-motion:reduce){
+  .wordmark__mark,.wordmark__v,.wordmark__h,.wordmark__mono{transition:none;}
+}
+
+/* Light ground: the ramp darkens to hold contrast on white. Print gets the
+   same treatment — a mint-to-sand ramp on paper is close to invisible. */
+@media print{
+  .wordmark__h,.wordmark__mono{
+    background:none;-webkit-text-fill-color:#0B1817;color:#0B1817;
+  }
+  .wordmark__mark{background:none;border-color:#0B1817;}
+}
 
 .rule{height:1px;width:88px;background:var(--accent-line);position:relative;margin-block:var(--s5)}
 .rule::after{content:"";position:absolute;right:0;top:0;height:1px;width:28%;background:var(--sand)}

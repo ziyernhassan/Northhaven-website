@@ -336,6 +336,40 @@
     });
   }
 
+
+  /* ---------- responsive logo lock-up ----------
+     A3 is the standard mark. Where it does not fit, it folds to C3 (the VH
+     monogram) and then to C4 (the diamond alone), animating between states so
+     a resize reads as the logo folding up rather than three different logos.
+
+     Measured against the header's own available width, not a viewport
+     breakpoint: the footer wordmark has room at every screen size and must
+     never collapse, while the header runs out early once the nav is beside it. */
+  var logos = document.querySelectorAll('[data-logo-responsive]');
+  if (logos.length && 'ResizeObserver' in window) {
+    var fitLogo = function (el) {
+      var host = el.parentElement;
+      if (!host) return;
+      el.classList.remove('is-mono', 'is-mark');
+      var room = host.clientWidth;
+      if (!room) return;
+      if (el.scrollWidth > room) {
+        el.classList.add('is-mono');
+        if (el.scrollWidth > room) {
+          el.classList.remove('is-mono');
+          el.classList.add('is-mark');
+        }
+      }
+    };
+    var ro = new ResizeObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) fitLogo(entries[i].target);
+    });
+    Array.prototype.forEach.call(logos, function (el) {
+      fitLogo(el);
+      if (el.parentElement) ro.observe(el.parentElement);
+    });
+  }
+
   /* footer year */
   var years = document.querySelectorAll('[data-year]');
   if (years.length) {
